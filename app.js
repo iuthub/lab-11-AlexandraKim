@@ -1,10 +1,13 @@
 window.onload = function (){
 	let calculator = document.querySelector('.calculator')
 	let keys = calculator.querySelector ('.calculator__keys')
+	const display = document.querySelector('.calculator__display')
 	keys.addEventListener('click', function (e) {
 		if (e.target.matches('button')) {
-			let key = e.target
-			let action = key.dataset.action
+			const key = e.target
+			const action = key.dataset.action
+			const keyContent = key.textContent
+			const displayedNum = display.textContent
 			if (!action) {
 				console.log ('number key !')
 			}
@@ -24,6 +27,14 @@ window.onload = function (){
 			if ( action === 'calculate') {
 				console.log (' equal key !')
 			}
+			
+			if (displayedNum === '0') {
+				display.textContent = keyContent
+			} else {
+				display.textContent = displayedNum + keyContent
+			}
+			
+			
 		}
 	})
 }
